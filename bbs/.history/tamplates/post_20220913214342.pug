@@ -1,0 +1,86 @@
+extend layout.pug
+
+
+block content
+
+  h1= post.title
+    img(src='/avatar/' + post.avatar width="30" height="30" style={float:'right'})
+  p= post.content
+  small= post.createdAt
+  if post.name == loginName
+    button.delete(data-post-id=post.postId) 删除帖子
+    script.
+      $("button.delete").on('click', async function(e) {
+        var postId = this.dataset.postId
+        if (confirm('确认删除吗？')) {
+          await fetch('/post/' + postId, {
+            method: 'DELETE'
+          })
+          alert('sucess!')
+          location.href = '/'
+        }
+      })
+
+  ul.comment-list
+    each comment in comments
+      li(style={overflow: 'hidden'})
+        | #{comment.content}
+        img(src='/avatar/' + comment.avatar style={float: 'right'} width=30 height=30)
+        a(style={float: 'right'} href="/user/" + comment.userId)= comment.name
+        if comment.userId == (user && user.userId) || post.userId == (user && user.userId)
+          button.delete-comment(data-comment-id=comment.commentId) 删除
+
+  script.
+    $('ul.comment-list').on('click', 'button.delete-comment', async function (e) {
+      var { commentId } = this.dataset
+
+      if (confirm('确定删除吗？')) {
+        try {
+          var res = await fetch('/comment/' + commentId, {
+            method: 'delete',
+          })
+          if (res.status == 200) {
+            $(this).parent('li').remove()
+          } else {
+            alert('删除失败，没有权限')
+          }
+        } catch(e) {
+          alert('网络连接失败')
+        }
+      }
+    })
+  hr
+
+  if user
+    form(action=`/comment/${post.postId}` method="post")
+      div 发表评论
+      textarea(name="content" rows="4" cols="30")
+      br
+      button 提交
+      script.
+        $('form').on('submit', async function(e) {
+          e.preventDefault()
+
+          var action = this.action
+          var comment = $(this).find('textarea').val()
+
+          var data = await fetch(action, {
+            method: 'post',
+            body: $(this).serialize(),
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          }).then(it => it.json())
+
+          $('ul').append(`
+            <li>
+              ${comment}
+              <a style="float:right;" href="/user/${data.userId}">${data.userName}</a>
+              <button class="delete-comment" data-comment-id="${data.commentId}">删除</button>
+            </li>
+          `)
+
+          $(this).find('textarea').val('')
+        })
+  else
+    p 想要评论？请先#[a(href="/login") 登录]

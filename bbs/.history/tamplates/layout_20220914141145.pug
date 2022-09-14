@@ -1,0 +1,53 @@
+doctype html
+
+html
+  head
+    meta(charset="UTF-8 ")
+    title 我的论坛 #{title}
+    block scripts
+      script(src='/jquery.min.js')
+      script(src='/bootstrap.min.js')
+
+    block styles
+      <link href="/bootstrap.min.css" rel="stylesheet">
+      <link href="/font-awesome.min.css" rel="stylesheet">
+      <link href="/layout.css" rel="stylesheet">
+  body
+    header.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      <div class="container">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item home active">
+            <a href="/" class="nav-link">首页</a>
+          </li>
+        </ul>
+        if user
+          <ul class="navbar-nav">
+            <li>
+              a(href="/user/" + user.userId).nav-link= user.name
+            </li>
+            <li>
+              <a href="/add-post" class="nav-link btn btn-primary btn-block mb-3">发贴</a>
+            </li>
+            <li>
+              <a href="/logout" class="nav-link">登出</a>
+            </li>
+          </ul>
+        else
+          <ul class="navbar-nav">
+            <li>
+              <a href="/register" class="nav-link">注册</a>
+            </li>
+            <li>
+              <a href="/login" class="nav-link">登录</a>
+            </li>
+          </ul>
+      </div>
+
+
+
+  block content
+      <footer class="text-muted small bg-dark py-4 mt-3">
+
+    </footer>
+
+

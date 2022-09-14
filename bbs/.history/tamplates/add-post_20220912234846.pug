@@ -1,0 +1,34 @@
+extend layout.pug
+
+block content
+  <div class="container">
+    <div class="row">
+
+    </div>
+  </div>
+  <h1>发贴</h1>
+
+  <form action="/add-post" method="post">
+    | 标题: <br>
+    <input type="text" name="title"/><br>
+    | 内容: <br>
+    <textarea name="content" cols="30" rows="8"></textarea><br>
+    <button>发贴</button>
+  </form>
+extend layout.pug
+
+block content
+  <div class="container">
+    <h1 class="card-header">发贴</h1>
+
+    <form action="/add-post" method="post">
+      | 标题: <br>
+      <input type="text" name="title"/><br>
+      | 内容: <br>
+      <textarea name="content" cols="30" rows="8"></textarea><br>
+      <button>发贴</button>
+    </form>
+  </div>
+
+
+

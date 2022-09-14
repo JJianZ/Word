@@ -1,0 +1,30 @@
+extend layout.pug
+
+block append styles
+  <link href="/index.css" rel="stylesheet">
+block content
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="card">
+          <ul class="list-unstyled threadlist mb-0">
+            each post in posts
+              <li class="media thread tap">
+                img(src='/avatar/' + post.avatar width="30" height="30").avatar-3
+                <div class="media-body">
+                  <div class="subject break-all">
+                    a(href="/post/" + post.postId).subject.break-all= post.title
+                  </div>
+                  <div class="d-flex justify-content-between small mt-1">
+                    <span class="username text-grey mr-1  hidden-sm">#{post.name}</span>
+                    <span class="date text-grey hidden-sm">#{post.createdAt}</span>
+                  </div>
+
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+

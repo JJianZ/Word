@@ -1,0 +1,40 @@
+extend layout.pug
+
+
+block content
+  <div class="container">
+    <div class="row">
+      <div class="main">
+        <div class="card card-thread">
+          <div class="card-body">
+            <div class="media-body">
+              <img class="avatar" src="/avatar/#{user.avatar}" width="50" height="50">
+              <h2>#{user.name}</h2>
+              <div class="media-body">
+                <h3>Ta发过的帖子</h3>
+                each post in posts
+                  div
+                    a(href="/post/#{post.postId}")= post.title
+              </div>
+            </div>
+          <div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <h3>Ta发过的帖子</h3>
+  each post in posts
+    div
+      a(href="/post/#{post.postId}")= post.title
+
+  <h3>Ta发过的评论</h3>
+
+  each comment in comments
+    <div>
+      <a href="/post/#{comment.postId}">#{comment.title}</a>
+      <br>
+      span= comment.content
+      <hr>
+    </div>

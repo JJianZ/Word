@@ -1,0 +1,27 @@
+extend layout.pug
+
+block append scripts
+  script(src="/spark-md5.min.js")
+
+block content
+
+  h1 注册
+  <form action="/register" enctype="multipart/form-data" method="post">
+    <div>名字: <input type="text" name="name"></div>
+    <div>邮箱: <input type="email" name="email"></div>
+    <div>密码: <input type="password" name="password"></div>
+    <div>密码: <input type="password" name="password1"></div>
+    <div>头像: <input type="file" name="avatar"></div>
+    <button>Submit</button>
+  </form>
+
+  script.
+    $('form').on('submit', (e) => {
+      var pwd = $('input[name="password"]').val()
+      pwd = SparkMD5.hash(pwd)
+      $('input[name="password"]').val(pwd)
+
+      var pwd = $('input[name="password1"]').val()
+      pwd = SparkMD5.hash(pwd)
+      $('input[name="password1"]').val(pwd)
+    })

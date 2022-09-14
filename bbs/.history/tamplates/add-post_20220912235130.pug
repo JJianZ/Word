@@ -1,0 +1,28 @@
+extend layout.pug
+
+block content
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+          <div class="card">
+            <h6 class="card-header">发贴</h6>
+            <div class="card-body">
+              <form action="/add-post" method="post">
+                | 标题: <br>
+                <input type="text" name="title"/><br>
+                | 内容: <br>
+                <textarea name="content" cols="30" rows="8"></textarea><br>
+                <button>发贴</button>
+              </form>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

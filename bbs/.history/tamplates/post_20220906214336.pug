@@ -1,0 +1,21 @@
+extend layout.pug
+
+
+block content
+  h1= post.title
+  p= post.content
+  small= post.timestamp
+
+  ul
+   each comment of comments
+    li
+      | #{comment.content} by
+      a(style="float:right" href="/user/" + comment.owner)= comment.owner
+  hr
+  if loginName
+    form(action=`/comment/${post.id}`)
+      div 发表评论
+      textarea(name="content")
+      button 提交
+  else
+    p 想要评论？请先#[a(href="/login") 登录]

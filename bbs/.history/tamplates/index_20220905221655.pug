@@ -1,0 +1,8 @@
+extend layout.pug
+
+block content
+  a(href="/") 首页
+
+  if loginName
+    span(title=`hi, ${loginName}`) 欢迎,#{loginName}
+    a(href="/add-post") 发帖

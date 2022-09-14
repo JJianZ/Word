@@ -1,0 +1,42 @@
+doctype html
+
+html
+  head
+    meta(charset="UTF-8 ")
+    title 我的论坛 #{title}
+    block scripts
+      script(src='/jquery.min.js')
+      script(src='/bootstrap.min.js')
+
+    block styles
+      <link href="/bootstrap.min.css" rel="stylesheet">
+      <link href="/font-awesome.min.css" rel="stylesheet">
+      <link href="/layout.css" rel="stylesheet">
+  body
+    header.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      <div class="container">
+        a(href="/").nav-link 首页
+        |
+        |
+        if user
+          span 欢迎,#{user.name}
+          |
+          |
+          a(href="/add-post").nav-link 发贴
+          |
+          |
+          a(href="/logout").nav-link 登出
+        else
+          a(href="/register").nav-link 注册
+          |
+          |
+          a(href="/login").nav-link 登录
+      <div>
+
+
+
+  block content
+  block foot
+    #footer
+      p &copy;
+

@@ -1,0 +1,6 @@
+extend layout.pug
+
+block content
+  each post in posts
+    div
+      a(href="/post/" + post.postId)= post.title

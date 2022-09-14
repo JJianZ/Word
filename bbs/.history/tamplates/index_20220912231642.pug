@@ -1,0 +1,10 @@
+extend layout.pug
+
+block content
+  <div class="container">
+
+    <div>
+      a(href="/post/" + post.postId)= post.title
+      span by #{post.name}
+    </div>
+  </div>

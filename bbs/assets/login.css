@@ -1,0 +1,32 @@
+body {
+  background-size: cover;
+  font-size: 15px;
+}
+.container .form {
+  width: 400px;
+  margin: 50px auto;
+  background: rgba(114, 196, 251, 0.1);
+}
+.container .form h3 {
+  background-color: rgba(164, 90, 21, 0.7);
+  text-align: center;
+}
+.container .form .fa {
+  display: inline-block;
+  top: 30px;
+  left: 6px;
+  position: relative;
+  color: #575757;
+}
+.container .form form {
+  display: flex;
+  justify-content: center;
+}
+.container .form input[type="text"],
+.container .form input[type="password"],
+.container .form input[type="email"] {
+  padding-left: 26px;
+}
+.container .form .btn {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,11 @@
+extend layout.pug
+
+block content
+  h1 发帖
+  form(action="/add-post" method="post")
+    | 标题:
+    input(type='text', name='title')
+    | 内容:
+    br
+    textarea(name="content" cols="30" rows="8")br
+    button 发帖

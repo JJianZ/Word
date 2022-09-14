@@ -1,0 +1,36 @@
+doctype html
+
+html
+  head
+    meta(charset="UTF-8 ")
+    title 我的论坛 #{title}
+    block scripts
+      script(src='/jquery.min.js')
+      script(src='/bootstrap.min.js')
+    <link href="/bootstrap.min.css" rel="stylesheet">
+    <link href="/layout.css" rel="stylesheet">
+  body
+
+    header.container
+      a(href="/") 首页
+      |
+      |
+      if loginName
+        span(title=`hi, ${loginName}`) 欢迎,#{loginName}
+        |
+        |
+        a(href="/add-post") 发帖
+        |
+        |
+        a(href="/logout") 登出
+      else
+        a(href="/register") 注册
+        |
+        |
+        a(href="/login") 登录
+
+    .container
+      block content
+      block foot
+        #footer
+          p.copy &copy

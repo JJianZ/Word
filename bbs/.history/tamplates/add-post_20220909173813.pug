@@ -1,0 +1,11 @@
+extend layout.pug
+
+block content
+  <h1>发贴</h1>
+  <form action="/add-post" method="post">
+    | 标题: <br>
+    <input type="text" name="title"/><br>
+    | 内容: <br>
+    <textarea name="content" cols="30" rows="8"></textarea><br>
+    <button>发贴</button>
+  </form>

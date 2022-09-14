@@ -1,0 +1,46 @@
+extend layout.pug
+
+block append scripts
+  script(src="/spark-md5.min.js")
+
+block append styles
+  <link href="/login.css" rel="stylesheet">
+
+block content
+  <div class="container">
+      <div class="form row">
+        <form action="/register" enctype="multipart/form-data" method="post" class="form-horizontal col-sm-offset col-md-offset-3">
+          <h3 class="form-title">注册</h3>
+          <div class="col-sm-9 col-md-9">
+            <div class="form-group">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <input type="text" name="name" class="form-control required" placeholder="请输入用户名" required>
+            </div>
+            <div class="form-group">
+              <i class="fa fa-key" aria-hidden="true"></i>
+              <input type="password" name="password" class="form-control required" placeholder="请输入密码" required>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+
+  <form action="/register" enctype="multipart/form-data" method="post">
+    <div>名字: <input type="text" name="name"></div>
+    <div>邮箱: <input type="email" name="email"></div>
+    <div>密码: <input type="password" name="password"></div>
+    <div>密码: <input type="password" name="password1"></div>
+    <div>头像: <input type="file" name="avatar"></div>
+    <button>Submit</button>
+  </form>
+
+  script.
+    $('form').on('submit', (e) => {
+      var pwd = $('input[name="password"]').val()
+      pwd = SparkMD5.hash(pwd)
+      $('input[name="password"]').val(pwd)
+
+      var pwd = $('input[name="password1"]').val()
+      pwd = SparkMD5.hash(pwd)
+      $('input[name="password1"]').val(pwd)
+    })

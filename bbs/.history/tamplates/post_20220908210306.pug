@@ -1,0 +1,48 @@
+extend layout.pug
+
+
+block content
+  h1= post.title
+  p= post.content
+  small= post.createdAt
+
+  if post.name == loginName
+    button.delete(data-post-id=post.postId) 删除帖子
+    script.
+      $('button.delete').on('click',async function(e) {
+        var postId = this.dataset.postId
+        if (confirm('确认删除吗？')) {
+          await fetch('/post/' + postId, {
+            method: 'DELETE'
+          })
+          alert('删除成功!')
+          location.href = '/'
+        }
+      })
+
+  ul
+   each comment of comments
+    li
+      | #{comment.content}
+      a(style="float:right" href="/user/" + comment.userId)= comment.name
+      button.delete-comment(data-comment-id=comment.commentId) 删除评论
+
+  script.
+    $('button.delete-comment').on('click',async function(e) {
+      var {commentId} = this.dataset
+      if (confirm('确认删除吗？')) {
+        await fetch('/comment/' + commentId, {
+          method: 'DELETE'
+        })
+        alert('删除成功!')
+        location.href = '/'
+      }
+    })
+  hr
+  if loginName
+    form(action=`/comment/${post.postId}` method="post")
+      div 发表评论
+      textarea(name="content" rows="3" cols="50")
+      button 提交
+  else
+    p 想要评论？请先#[a(href="/login") 登录]

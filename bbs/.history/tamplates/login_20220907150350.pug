@@ -1,0 +1,28 @@
+extend layout.pug
+
+block content
+  h1 登录
+  if session.刚刚登陆失败的原因
+    p= session.刚刚登陆失败的原因
+  form(action='/login?next=#{returnUrl}', method='post')
+    div
+      | 用户名:
+      input(type='text', name='name')
+    div
+      | 密码:
+      input(type='password', name='password')
+
+    if loginFailCount >= 3
+      div
+        | 验证码:
+        input(type='text', name='captcha')
+        br
+        img(src="/captcha")
+    button 登录
+    form(action='/login?next=#{returnUrl}', method='post')
+      div
+        | &#x7528;&#x6237;&#x540D;:
+        input(type='text', name='name')
+      div
+        | &#x5BC6;&#x7801;:
+        input(type='password', name='password')

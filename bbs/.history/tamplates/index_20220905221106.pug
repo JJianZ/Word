@@ -1,0 +1,11 @@
+extend layout.pug
+
+block content
+  a(href="/") 首页
+
+  if loginName
+    div(title=`h1,${loginName}`)欢迎,#{loginName}
+      a(href="/"）首页
+      a(href="/add-post"）发帖
+      a(href="/logout"）登出
+  else

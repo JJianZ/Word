@@ -1,0 +1,27 @@
+extend layout.pug
+
+block append scripts
+  script(src="/spark-md5.min.js")
+
+block content
+  h1 登录
+  if session.刚刚登陆失败的原因
+    p= session.刚刚登陆失败的原因
+
+  <form action="/login?next=#{returnUrl}" method="post">
+    <div>用户名: <input type="text" name="name"></div>
+    <div>密码: <input type="password" name="password"></div>
+
+    if session.loginFailCount >= 3
+      <div>验证码: <input type="text" name="captcha"></div>
+      <div><img src="/captcha" ></div>
+
+    <button>登录</button>
+  </form>
+
+  script.
+    $('form').on('submit', (e) => {
+      var pwd = $('input[type="password"]').val()
+      pwd = SparkMD5.hash(pwd)
+      $('input[type="password"]').val(pwd)
+    })

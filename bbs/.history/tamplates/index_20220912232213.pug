@@ -1,0 +1,17 @@
+extend layout.pug
+
+
+block content
+  <div class="container">
+    <ul class="list-unstyled threadlist mb-0">
+        each post in posts
+          <li class="media thread tap">
+            <a href="/post/" + post.postId class="ml-1.mt-1.mr-3">
+              #(post.title)
+            </a>
+            a(href="/post/" + post.postId).ml-1.mt-1.mr-3= post.title
+            span by #{post.name}
+          </li>
+    </ul>
+
+  </div>

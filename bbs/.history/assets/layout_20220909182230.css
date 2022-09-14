@@ -1,0 +1,11 @@
+.container {
+  max-width: 1000px;
+}
+header.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+header.container a {
+  margin: 0 20px;
+}

@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body,html {
+  height: 100%;
+  overflow-y: hidden;
+}
+ul {
+  list-style: none;
+}
+.w {
+  width: 1226px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+header {
+  height: 140px;
+  .site-topbar {
+    height: 40px;
+    background-color: #333333;
+    font-size: 12px;
+    .container {
+      .topbar-nav {
+        float: left;
+        // height: 40px;
+        line-height: 40px;
+        a {
+          position: relative;
+          .appcode {
+            position: absolute;
+            display: none;
+            left: -40px;
+            width: 125px;
+            height: 0;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .4);
+            line-height: 1;
+            overflow: hidden;
+            transition: .3s;
+            img {
+              width: 90px;
+              height: 90px;
+              margin-top: 18px;
+              margin-bottom: 12px;
+            }
+          }
+          &:hover .appcode {
+            display: block;
+            height: 150px;
+          }
+        }
+      }
+      .siteUserInfo {
+        line-height: 40px;
+        height: 40px;
+        float: right;
+        :last-child {
+          margin-right: 20px;
+        }
+      }
+      .cart {
+        position: relative;
+        float: right;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #424242;
+        text-align: center;
+          .cartlink {
+            color: #fff;
+            height: 0;
+          }
+          .cartmenu {
+            position: absolute;
+            width: 320px;
+            height: 0;
+            line-height: 100px;
+            right: 0;
+            top: 100%;
+            transition: 1s;
+            background-color: white;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .4);
+            display: none;
+          }
+          &:hover {
+            .cartlink {
+              color: #ff6700;
+              background-color: #fff;
+            }
+              .cartmenu {
+                display: block;
+                height: 100px;
+              }
+          }
+        }
+      }
+      a {
+        display: inline-block;
+        height: 40px;
+        color: #b0b0b0;
+        &:hover {
+          color: white;
+        }
+      }
+      span {
+        color: #424242;
+        margin: 0 0.3em;
+      }
+    }
+    .site-header {
+      .container {
+        height: 100px;
+        background-color: pink;
+          .header-logo {
+            width: 62px;
+            height: 56px;
+              img {
+                margin-top: 22px;
+                width: 56px;
+                height: 56px;
+              }
+          }
+          .header-nav {
+            width: 900px;
+            height: 100px;
+            margin-left: 250px;
+            line-height: 1;
+              ul {
+                display: flex;
+                gap: 20px;
+
+              }
+          }
+      }
+    }
+  }
+
+

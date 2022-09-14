@@ -1,0 +1,8 @@
+extend layout.pug
+
+block content
+  <h1>登录</h1>
+  <form action="/login?next=#{returnUrl}" method="post">
+    <div>用户名: <input type="text" name="name"></div>
+    <div>密码: <input type="password" name="password"></div>
+    <button>登录</button>

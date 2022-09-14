@@ -1,0 +1,30 @@
+header {
+  flex: 0 0 auto;
+  width: 100%;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+header .container {
+  max-width: 1140px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+header .container span {
+  color: blue;
+}
+header .container .btn-primary {
+  color: #fff;
+  background-color: #1f4977;
+  border-color: #1f4977;
+}
+#footer {
+  position: fixed;
+  width: 1280px;
+}

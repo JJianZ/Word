@@ -1,0 +1,15 @@
+extend layout.pug
+
+block content
+  h1 登录
+  form(action='/login?next=#{returnUrl}', method='post')
+    div
+      |  用户名:
+      input(type='text', name='name')
+    div
+      |  密码:
+      input(type='password', name='password')
+    div
+      | 验证码:
+      img(src="/captcha")
+    button 登录
