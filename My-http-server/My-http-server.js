@@ -6,7 +6,7 @@ const server = http.createServer()
 const mime = require('mime')
 
 const port = 8899
-const baseDir = '..\\miao'  // 基础文件夹
+const baseDir = '..\\Work'  // 基础文件夹
 
 server.on('request',async (req,res) => {
   req.url = path.posix.join(req.url)    // 化简请求路径
